@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Illia Voitenko, QA Engineer portfolio
 
-## Getting Started
+Personal portfolio site for a QA engineer: who I am, what I test and which tools I use.
+Built with Next.js (App Router), TypeScript and Tailwind CSS 4.
 
-First, run the development server:
+## Tech stack
+
+- Next.js 16 (App Router, static prerendering)
+- React 19, TypeScript (strict)
+- Tailwind CSS 4
+- Geist Sans and Geist Mono fonts
+- lucide-react icons
+- ESLint and Prettier
+
+## Getting started
+
+Requirements: Node.js 22 or newer (see `.nvmrc`).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command             | What it does                  |
+| ------------------- | ----------------------------- |
+| `npm run dev`       | Start the dev server          |
+| `npm run build`     | Create a production build     |
+| `npm start`         | Run the production build      |
+| `npm run lint`      | Check code with ESLint        |
+| `npm run typecheck` | Check types with TypeScript   |
+| `npm run format`    | Format the code with Prettier |
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` to `.env.local`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The URL is used for metadata, `sitemap.xml` and `robots.txt`.
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/              Layout, page, metadata, robots, sitemap, icon
+  components/
+    header.tsx
+    footer.tsx
+    sections/       Hero, About, Skills, Contact
+    ui/             Container, Section, Button, TestRun
+  data/profile.ts   All content: text, skills, contacts, languages
+  lib/cn.ts         Class name helper (clsx + tailwind-merge)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Customizing
+
+- **Content:** edit `src/data/profile.ts`. Components only render this data.
+- **Colors:** change the tokens in the `@theme` block of `src/app/globals.css`.
+- **Hero test run:** edit the `heroRun` array in `profile.ts`. The animation lives in `src/components/ui/test-run.tsx`.
+- **Section order:** change it in `src/app/page.tsx`.
+
+## Accessibility and performance
+
+- Semantic landmarks, skip link and visible keyboard focus
+- Animation respects `prefers-reduced-motion`
+- Fully static page, no runtime data fetching
+- Open Graph metadata and JSON-LD `Person` schema
