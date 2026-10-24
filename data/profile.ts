@@ -12,8 +12,6 @@ export const profile = {
 } as const;
 
 export const facts = [
-  { label: "Testing", value: "3 years" },
-  { label: "Web development", value: "5+ years" },
   { label: "Location", value: profile.location },
   { label: "Availability", value: profile.availability },
 ] as const;
@@ -38,6 +36,7 @@ export const skillGroups: readonly SkillGroup[] = [
     title: "Testing",
     description: "How I find problems before users do.",
     items: [
+      "Test automation",
       "Functional testing",
       "Exploratory testing",
       "Regression testing",
@@ -58,7 +57,14 @@ export const skillGroups: readonly SkillGroup[] = [
     id: "automation",
     title: "Test automation",
     description: "Checks that run without me.",
-    items: ["Cypress", "Jest", "React Testing Library", "Postman", "TypeScript"],
+    items: [
+      "Cypress",
+      "Jest",
+      "Playwright",
+      "React Testing Library",
+      "Postman",
+      "TypeScript",
+    ],
   },
   {
     id: "data",
@@ -74,6 +80,8 @@ export const skillGroups: readonly SkillGroup[] = [
       "Node.js",
       "NestJS",
       "Express",
+      "Python (Base)",
+      "Go (Base)",
     ],
   },
   {
@@ -88,8 +96,11 @@ export const skillGroups: readonly SkillGroup[] = [
     description: "How the work fits into a team.",
     items: [
       "Git and GitHub",
+      "GitHub Actions",
+      "Git",
       "Docker",
       "CI/CD",
+      "CLI",
       "Command line",
       "Chrome DevTools",
       "Lighthouse",
